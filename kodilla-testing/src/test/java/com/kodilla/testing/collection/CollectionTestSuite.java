@@ -31,16 +31,15 @@ public class CollectionTestSuite {
     public void testOddNumbersExterminatorEmptyList(){
 
         // given
-        ArrayList<Integer> numbers = new ArrayList<Integer>();
-        ArrayList<Integer> evenNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> allNumbers = new ArrayList<Integer>();
         OddNumbersExterminator exterminator = new OddNumbersExterminator();
 
         // when
-        ArrayList<Integer> results = exterminator.exterminate(numbers);
+        ArrayList<Integer> results = exterminator.exterminate(allNumbers);
         System.out.println("Testing " + results);
 
         // then
-        Assert.assertEquals(evenNumbers, results);
+        Assert.assertEquals(0, results.size());
     }
 
     @Test
@@ -48,21 +47,23 @@ public class CollectionTestSuite {
 
         // given
         ArrayList<Integer> numbers = new ArrayList<Integer>();
-        numbers.add(10);
-        numbers.add(55);
-        numbers.add(62);
+        numbers.add(11);
+        numbers.add(51);
+        numbers.add(60);
         numbers.add(21);
-        numbers.add(22);
+        numbers.add(21);
         numbers.add(20);
-        numbers.add(67);
-        numbers.add(52);
+        numbers.add(61);
+        numbers.add(51);
+        numbers.add(22);
+        numbers.add(56);
+        numbers.add(61);
 
-        ArrayList<Integer> evenNumbers = new ArrayList<Integer>();
-        evenNumbers.add(10);
-        evenNumbers.add(62);
-        evenNumbers.add(22);
-        evenNumbers.add(20);
-        evenNumbers.add(52);
+        ArrayList<Integer> evenNumber = new ArrayList<Integer>();
+        evenNumber.add(60);
+        evenNumber.add(20);
+        evenNumber.add(22);
+        evenNumber.add(56);
 
         OddNumbersExterminator exterminator = new OddNumbersExterminator();
 
@@ -71,6 +72,44 @@ public class CollectionTestSuite {
         System.out.println("Testing " + results);
 
         //Then
-        Assert.assertEquals(evenNumbers, results);
+        Assert.assertEquals(evenNumber, results);
+    }
+
+    @Test
+    public void testOneEvenNumber(){
+
+        // given
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        numbers.add(60);
+
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
+
+        // when
+        ArrayList<Integer> results = exterminator.exterminate(numbers);
+        System.out.println("Testing " + results);
+
+        //Then
+        Assert.assertEquals(1, results.size());
+        int evenResult = results.get(0);
+        Assert.assertEquals(60, evenResult);
+
+    }
+
+    @Test
+    public void testOneOddNumber(){
+
+        // given
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        numbers.add(61);
+
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
+
+        // when
+        ArrayList<Integer> results = exterminator.exterminate(numbers);
+        System.out.println("Testing " + results);
+
+        //Then
+        Assert.assertEquals(0, results.size());
+        Assert.assertTrue(results.isEmpty());
     }
 }

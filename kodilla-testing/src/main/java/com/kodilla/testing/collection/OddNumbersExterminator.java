@@ -5,18 +5,21 @@ import java.util.*;
 
 public class OddNumbersExterminator {
 
-    ArrayList<Integer> evenNumbers = new ArrayList<Integer>();
+    //ArrayList<Integer> numbers = new ArrayList<Integer>();
 
-    public ArrayList exterminate(ArrayList<Integer> numbers) {
 
-        for (Integer number: numbers){
+    public ArrayList<Integer> exterminate(ArrayList<Integer> numbers) {
 
-            if (number%2 == 0){
 
-                evenNumbers.add(number);
+        ArrayList<Integer> result = new ArrayList<>();
+
+
+        for (int number : numbers) {
+            if (number % 2 == 0) {
+                result.add(number);
             }
         }
-        return evenNumbers;
+
+        return result;
     }
 }
-
