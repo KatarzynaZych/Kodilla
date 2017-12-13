@@ -2,14 +2,12 @@ package com.kodilla.testing.shape;
 
 public class Triangle implements Shape{
 
-    String shapeName;
-    double field;
+  private   String shapeName;
+  private   double field;
 
     public Triangle(double base, double height) {
-        this.shapeName = shapeName;
         this.field = 0.5*base*height;
     }
-
 
     public String getShapeName() {
 

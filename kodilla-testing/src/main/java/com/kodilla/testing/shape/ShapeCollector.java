@@ -15,11 +15,9 @@ public class ShapeCollector {
     public ShapeCollector() {
     }
 
-    public boolean addFigure(Shape shape) {
+    public void addFigure(Shape shape) {
 
         shapeList.add(shape);
-
-        return true;
     }
 
     public boolean removeFigure(Shape shape) {
