@@ -21,10 +21,9 @@ public class ShapeCollector {
     }
 
     public boolean removeFigure(Shape shape) {
+        
+        return shapeList.remove(shape);
 
-        shapeList.remove(shape);
-
-        return true;
     }
 
     public Shape getFigure(int n) {
