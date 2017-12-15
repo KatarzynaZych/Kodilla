@@ -42,7 +42,7 @@ public class ForumStatistics {
         // zamiast if
         //averageCommentsPerPost=(statistics.postsCount()!= 0)?statistics.commentsCount() / statistics.postsCount():0;
 
-        if( statistics.postsCount() != 0) {
+        if( statistics.postsCount() != 0 ) {
             averageCommentsPerPost = (double)  statistics.commentsCount() / statistics.postsCount();
         }
     }
