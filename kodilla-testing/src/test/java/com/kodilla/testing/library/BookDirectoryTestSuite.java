@@ -94,12 +94,13 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testlistBooksInHandsOfZero() {
+    public void testListBooksInHandsOfZero() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         List<Book> resultListOfBooks = new ArrayList<Book>();
         resultListOfBooks = generateListOfNBooks(5);
+
 
         when(libraryDatabaseMock.listBooksInHandsOf(new LibraryUser("John", "Smith","125")).thenReturn(resultListOfBooks));
 
