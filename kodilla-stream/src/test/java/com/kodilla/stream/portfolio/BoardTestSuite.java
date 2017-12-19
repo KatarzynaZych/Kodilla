@@ -3,10 +3,8 @@ package com.kodilla.stream.portfolio;
 import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalDouble;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
@@ -141,47 +139,4 @@ public class BoardTestSuite {
         Assert.assertEquals(2, longTasks);
     }
 
-    @Test
-    public void testAddTaskListAverageWorkingOnTask(){
-        //Given
-        Board project = prepareTestData();
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-
-
-        //When
-         double workingDayOnTask = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .mapToLong(b-> DAYS.between(b.getCreated(),LocalDate.now()))
-                .sum();
-
-         double taskInProgress = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .count();
-
-        //Then
-        Assert.assertEquals(10, workingDayOnTask/taskInProgress,0.01);
-    }
-
-    @Test
-    public void testAddTaskListAverageWorkingOnTaskNext(){
-        //Given
-        Board project = prepareTestData();
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-
-
-        //When
-        double averageTaskDays =project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .mapToDouble(b -> DAYS.between(b.getCreated(),LocalDate.now()))
-                .average()
-                .getAsDouble();
-
-        //Then
-        Assert.assertEquals(10, averageTaskDays,0.01);
-    }
 }
