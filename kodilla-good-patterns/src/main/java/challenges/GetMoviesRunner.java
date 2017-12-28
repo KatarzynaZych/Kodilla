@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class getMoviesRunner {
+public class GetMoviesRunner {
 
     public static void main(String[] args){
 
