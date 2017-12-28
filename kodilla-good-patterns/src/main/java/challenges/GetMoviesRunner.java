@@ -1,9 +1,7 @@
 package challenges;
 
-import java.util.List;
-import java.util.Map;
+
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class GetMoviesRunner {
 
@@ -11,14 +9,11 @@ public class GetMoviesRunner {
 
         MovieStore movieStore = new MovieStore();
 
-        String cos = movieStore.getMovies().entrySet()
-                .stream()
-                .map(e -> e.getValue())
-                .map(m -> m.get(m.size() - m.size()) +"!"+ m.get(m.size() - 1))
+        String moviesString = movieStore.getMovies().entrySet().stream()
+                .flatMap(entry -> entry.getValue().stream())
                 .collect(Collectors.joining("!", "!", "!"));
 
-        System.out.println(cos);
-                
+        System.out.println(moviesString);
 
     }
 }
