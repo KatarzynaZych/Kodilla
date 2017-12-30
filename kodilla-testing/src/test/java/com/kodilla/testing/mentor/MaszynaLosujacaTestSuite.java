@@ -47,22 +47,13 @@ public class MaszynaLosujacaTestSuite {
 
         DateBase dateBaseMock = mock(DateBase.class);
         List<Integer> liczbyLosowane = new ArrayList<>();
-        liczbyLosowane.add(11);
-        liczbyLosowane.add(15);
-        liczbyLosowane.add(20);
         liczbyLosowane.add(1);
-        liczbyLosowane.add(3);
-        liczbyLosowane.add(12);
-        liczbyLosowane.add(16);
-        liczbyLosowane.add(21);
-        liczbyLosowane.add(10);
-        liczbyLosowane.add(38);
-
+        liczbyLosowane.add(8);
         Jackpot jackpot = new Jackpot(dateBaseMock);
 
         //when
         when(dateBaseMock.wylosuj(2)).thenReturn(liczbyLosowane);
-        int wynik2 = jackpot.jackpotLosuj(5,20);
+        int wynik2 = jackpot.jackpotLosuj(1,2);
 
         //then
 
@@ -76,20 +67,20 @@ public class MaszynaLosujacaTestSuite {
         DateBase dateBaseMock = mock(DateBase.class);
         List<Integer> liczbyLosowane = new ArrayList<>();
 
-        for(int i=1; i<=50; i++){
-
-            liczbyLosowane.add(i);
-        }
-
+        liczbyLosowane.add(1);
+        liczbyLosowane.add(2);
+        liczbyLosowane.add(11);
+        liczbyLosowane.add(22);
+        liczbyLosowane.add(49);
         Jackpot jackpot = new Jackpot(dateBaseMock);
 
         //when
         when(dateBaseMock.wylosuj(5)).thenReturn(liczbyLosowane);
-        int wynik3 = jackpot.jackpotLosuj(5,20,11,25,81);
+        int wynik3 = jackpot.jackpotLosuj(5,20,11,25,42);
 
         //then
 
-        Assert.assertEquals(4, wynik3);
+        Assert.assertEquals(1, wynik3);
 
     }
 }
