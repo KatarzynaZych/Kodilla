@@ -7,50 +7,20 @@ public class RpsLoop {
     private int userScore = 0;
     private int computerScore = 0;
 
-    public String mainGame(int numberOfRounds){
+    public String mainGame(int numberOfRounds, Scanner scanner){
 
         boolean end = false;
+        Results results = new Results(0,0);
 
         while (!end){
 
-            Random randomGenerator = new Random();
-            int computerMove = randomGenerator.nextInt(2)+1;
 
-            System.out.println("Enter your move: ");
-            Scanner scanner = new Scanner(System.in);
-            int userMove = scanner.nextInt();
+            RpsRound rpsRound = new RpsRound();
 
-            if (userMove == 1 && computerMove == 1 ) {
-                userScore++;
-                computerScore++;
-                System.out.println("The round ended in a draw");
-            } else if (userMove == 1 && computerMove == 2 ){
-                userScore++;
-                System.out.println("You won the round");
-            } else if (userMove== 1 && computerMove == 3 ){
-                computerScore++;
-                System.out.println("The computer won the round");
-            } else if(userMove == 2 && computerMove == 2 ) {
-                userScore++;
-                computerScore++;
-                System.out.println("The round ended in a draw");
-            } else if (userMove == 2 && computerMove == 1 ){
-                computerScore++;
-                System.out.println("The computer won the round");
-            } else if (userMove == 2 && computerMove == 3 ){
-                userScore++;
-                System.out.println("You won the round");
-            }else if(userMove == 3 && computerMove == 3 ) {
-                userScore++;
-                computerScore++;
-                System.out.println("The round ended in a draw");
-            } else if (userMove == 3 && computerMove == 1 ){
-                userScore++;
-                System.out.println("You won the round");
-            } else if (userMove == 3 && computerMove == 2 ){
-                computerScore++;
-                System.out.println("The computer won the round");
-            }
+            results = rpsRound.oneRound(results,scanner);
+
+            userScore = results.getUserScore();
+            computerScore = results.getComputerScore();
 
             if (numberOfRounds == userScore || numberOfRounds == computerScore){
 

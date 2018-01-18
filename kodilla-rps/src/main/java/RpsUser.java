@@ -2,9 +2,8 @@ import java.util.Scanner;
 
 public class RpsUser {
 
-    public String getUserName() {
+    public String getUserName(Scanner scanner) {
 
-        Scanner scanner = new Scanner(System.in);
         String userName = scanner.nextLine();
 
         return userName;

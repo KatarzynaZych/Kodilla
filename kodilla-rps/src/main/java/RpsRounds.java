@@ -2,9 +2,8 @@ import java.util.Scanner;
 
 public class RpsRounds {
 
-    public int getNumberOfRounds() {
+    public int getNumberOfRounds(Scanner scanner) {
 
-        Scanner scanner = new Scanner(System.in);
         int numberOfRounds = scanner.nextInt();
 
         return numberOfRounds;
