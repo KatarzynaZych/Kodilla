@@ -3,8 +3,8 @@ package challenges;
 public class OrderProcessor {
 
     private InformationService informationService;
-    private OrderService orderService;// RentalService rentalService;
-    private OrderRepository orderRepository;// RentalRepository rentalRepository;
+    private OrderService orderService;
+    private OrderRepository orderRepository;
 
 
     public OrderProcessor(final InformationService informationService,final OrderService orderService,final OrderRepository orderRepository) {

@@ -4,13 +4,14 @@ import java.time.LocalDateTime;
 
 public class OrderRequestRetriever {
 
-    public OrderRequest retrieve(){
+    private static int orderId = 10000;
+    private static int userId = 1;
 
-        User user = new User("John Kowalsky", 1200548, "john.kowalsky@yoohoo.com");
-        int orderId = 100001;
-        LocalDateTime dateOfOrder = LocalDateTime.of(2017,12,21,12,00);
+    public OrderRequest retrieve(String userName, String userEmail){
 
-        return new OrderRequest(user,orderId,dateOfOrder);
+        User user = new User(userName, userId++, userEmail);
+
+        return new OrderRequest(user, orderId++, LocalDateTime.now());
 
     }
 }

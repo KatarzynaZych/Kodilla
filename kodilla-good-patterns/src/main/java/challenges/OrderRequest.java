@@ -8,8 +8,6 @@ public class OrderRequest {
     private LocalDateTime dateOfOrder ;
     private int itemId;
 
-
-
     public OrderRequest(User user, int itemId, LocalDateTime dateOfOrder) {
         this.userName = user;
         this.itemId = itemId;

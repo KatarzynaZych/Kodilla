@@ -5,5 +5,5 @@ import java.util.HashMap;
 
 public interface OrderRepository {
 
-    void createOrder(User userName, int itemId, LocalDateTime dateOfOrder);
+    void createOrder(User user, int itemId, LocalDateTime dateOfOrder);
 }

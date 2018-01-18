@@ -1,5 +1,6 @@
 package challenges;
 
+
 public class ContactService implements InformationService {
 
     public void inform(User user) {
@@ -7,4 +8,5 @@ public class ContactService implements InformationService {
         System.out.println("Sending mail in progress ... ");
 
     }
+
 }
