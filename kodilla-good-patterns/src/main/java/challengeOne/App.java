@@ -6,7 +6,7 @@ public class App {
 
     public static void main(String[] ars){
 
-        String requestedProduct = "apples";
+        String requestedProduct = "bread";
 
         ProductMap productMap = new ProductMap();
         Shop shop = productMap.shopFinder(requestedProduct);

@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 public class ProductMap {
 
+    private Shop ProductNotAvaible;
+
     public Shop shopFinder(String requestedProduct) {
 
         HashMap<String, Shop> shopMap = new HashMap<String, Shop>();
@@ -22,7 +24,7 @@ public class ProductMap {
         if (shopMap.containsKey(requestedProduct)) {
             return shopMap.get(requestedProduct);
         } else {
-            return null;
+            return new ProductNotAvaible();
         }
     }
 }
