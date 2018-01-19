@@ -2,9 +2,9 @@ package challengeOne;
 
 public class OrderRequest {
 
-    private  Shop shop;
+    private Shop shop;
     private String product;
-  private double productQuantity;
+    private double productQuantity;
 
     public OrderRequest(Shop shop, String product, double productQuantity) {
         this.shop = shop;
@@ -13,14 +13,14 @@ public class OrderRequest {
     }
 
     public Shop getShop() {
-        return shop;
+        return new ExtraFoodShop();
     }
 
     public String getProduct() {
         return product;
     }
+
     public double getProductQuantity() {
         return productQuantity;
     }
-
 }
