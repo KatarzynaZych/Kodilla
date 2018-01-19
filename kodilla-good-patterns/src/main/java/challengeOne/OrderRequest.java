@@ -13,7 +13,7 @@ public class OrderRequest {
     }
 
     public Shop getShop() {
-        return new ExtraFoodShop();
+        return shop;
     }
 
     public String getProduct() {
