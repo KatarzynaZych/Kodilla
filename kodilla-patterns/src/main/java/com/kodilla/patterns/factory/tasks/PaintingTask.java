@@ -6,7 +6,7 @@ public class PaintingTask implements Task {
     private String taskName;
     private String color;
     private String whatToPaint;
-    String taskExecuted;
+    boolean taskExecuted;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
@@ -15,15 +15,14 @@ public class PaintingTask implements Task {
     }
 
     @Override
-    public String executeTask(LocalDateTime dueDate) {
-
+    public boolean executeTask(LocalDateTime dueDate) {
         if (LocalDateTime.now().isAfter(dueDate) || LocalDateTime.now().isEqual(dueDate)){
-            taskExecuted = "is done";
-            System.out.println("Painting task " + taskExecuted);
+            taskExecuted = true;
+            System.out.println("Painting task " + "is done");
 
         }else{
-            taskExecuted = "is not done";
-            System.out.println("Painting " + taskExecuted);
+            taskExecuted = false;
+            System.out.println("Painting task " + "is not done");
 
         }
         return taskExecuted;
@@ -35,12 +34,7 @@ public class PaintingTask implements Task {
     }
 
     @Override
-    public boolean isTaskExecuted(String taskExcuted) {
-
-        if(taskExcuted.equals("is done")){
-            return true;
-        }else {
-            return false;
-        }
+    public boolean isTaskExecuted() {
+        return taskExecuted;
     }
 }

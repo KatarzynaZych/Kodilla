@@ -14,10 +14,10 @@ public class TaskFactoryTestSuite {
 
         //When
         Task shopping = taskFactory.makeTask(TaskFactory.SHOPPINGTASK);
-        String executed = shopping.executeTask(LocalDateTime.of(2001,12,11,12,00));
+        boolean executed = shopping.executeTask(LocalDateTime.of(2001,12,11,12,00));
 
         //Then
-        Assert.assertEquals(true,shopping.isTaskExecuted(executed));
+        Assert.assertEquals(true,shopping.isTaskExecuted());
         Assert.assertEquals("Shopping task 1", shopping.getTaskName());
     }
 
@@ -28,11 +28,11 @@ public class TaskFactoryTestSuite {
 
         //When
         Task painting = taskFactory.makeTask(TaskFactory.PAINTINGTASK);
-        String executed = painting.executeTask(LocalDateTime.of(2018,12,11,12,00));
+        boolean executed = painting.executeTask(LocalDateTime.of(2018,12,11,12,00));
 
 
         //Then
-        Assert.assertEquals(false,painting.isTaskExecuted(executed));
+        Assert.assertEquals(false,painting.isTaskExecuted());
         Assert.assertEquals("Painting task 2", painting.getTaskName());
     }
 
@@ -43,11 +43,11 @@ public class TaskFactoryTestSuite {
 
         //When
         Task driving = taskFactory.makeTask(TaskFactory.DRIVINGTASK);
-        String executed = driving.executeTask(LocalDateTime.of(2015,12,11,12,00));
+        boolean executed = driving.executeTask(LocalDateTime.of(2015,12,11,12,00));
 
 
         //Then
-        Assert.assertTrue(driving.isTaskExecuted(executed));
+        Assert.assertTrue(driving.isTaskExecuted());
         Assert.assertEquals("Driving task 3", driving.getTaskName());
     }
 }

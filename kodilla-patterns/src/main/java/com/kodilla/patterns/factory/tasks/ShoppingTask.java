@@ -7,7 +7,7 @@ public class ShoppingTask implements Task {
     private String taskName;
     private String whatToBuy;
     private double quantity;
-    String taskExecuted;
+    boolean taskExecuted;
 
     public ShoppingTask(String taskName, String whatToBuy, double quantity) {
         this.taskName = taskName;
@@ -16,14 +16,14 @@ public class ShoppingTask implements Task {
     }
 
     @Override
-    public String executeTask(LocalDateTime dueDate) {
+    public boolean executeTask(LocalDateTime dueDate) {
         if (LocalDateTime.now().isAfter(dueDate) || LocalDateTime.now().isEqual(dueDate)){
-            taskExecuted = "is done";
-            System.out.println("Shopping task " + taskExecuted);
+            taskExecuted = true;
+            System.out.println("Shopping task " + "is done");
 
         }else{
-            taskExecuted = "is not done";
-            System.out.println("Shopping task " + taskExecuted);
+            taskExecuted = false;
+            System.out.println("Shopping task " + "is not done");
 
         }
         return taskExecuted;
@@ -35,12 +35,9 @@ public class ShoppingTask implements Task {
     }
 
     @Override
-    public boolean isTaskExecuted(String taskExcuted) {
+    public boolean isTaskExecuted() {
 
-        if(taskExcuted.equals("is done")){
-            return true;
-        }else {
-        return false;
-        }
+        return taskExecuted;
     }
 }
+

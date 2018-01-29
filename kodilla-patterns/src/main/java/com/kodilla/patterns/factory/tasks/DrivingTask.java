@@ -7,7 +7,7 @@ public class DrivingTask implements Task {
     private String taskName;
     private String where;
     private String using;
-    String taskExecuted;
+    boolean taskExecuted;
 
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
@@ -16,15 +16,14 @@ public class DrivingTask implements Task {
     }
 
     @Override
-    public String executeTask(LocalDateTime dueDate) {
-
+    public boolean executeTask(LocalDateTime dueDate) {
         if (LocalDateTime.now().isAfter(dueDate) || LocalDateTime.now().isEqual(dueDate)){
-            taskExecuted = "is done";
-            System.out.println("Driving task " + taskExecuted);
+            taskExecuted = true;
+            System.out.println("Driving task " + "is done");
 
         }else{
-            taskExecuted = "is not done";
-            System.out.println("Driving task " + taskExecuted);
+            taskExecuted = false;
+            System.out.println("Driving task " + "is not done");
 
         }
         return taskExecuted;
@@ -37,12 +36,8 @@ public class DrivingTask implements Task {
 
 
     @Override
-    public boolean isTaskExecuted(String taskExcuted) {
+    public boolean isTaskExecuted() {
 
-        if(taskExcuted.equals("is done")){
-            return true;
-        }else {
-            return false;
-        }
+        return taskExecuted;
     }
 }
