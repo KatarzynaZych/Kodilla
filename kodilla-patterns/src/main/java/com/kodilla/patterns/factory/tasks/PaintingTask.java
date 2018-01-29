@@ -1,9 +1,12 @@
 package com.kodilla.patterns.factory.tasks;
 
+import java.time.LocalDateTime;
+
 public class PaintingTask implements Task {
     private String taskName;
     private String color;
     private String whatToPaint;
+    String taskExecuted;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
@@ -12,9 +15,18 @@ public class PaintingTask implements Task {
     }
 
     @Override
-    public void executeTask() {
-        System.out.println("This task wasn't done...");
+    public String executeTask(LocalDateTime dueDate) {
 
+        if (LocalDateTime.now().isAfter(dueDate) || LocalDateTime.now().isEqual(dueDate)){
+            taskExecuted = "is done";
+            System.out.println("Painting task " + taskExecuted);
+
+        }else{
+            taskExecuted = "is not done";
+            System.out.println("Painting " + taskExecuted);
+
+        }
+        return taskExecuted;
     }
 
     @Override
@@ -23,7 +35,12 @@ public class PaintingTask implements Task {
     }
 
     @Override
-    public boolean isTaskExecuted() {
-        return false;
+    public boolean isTaskExecuted(String taskExcuted) {
+
+        if(taskExcuted.equals("is done")){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

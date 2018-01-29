@@ -1,7 +1,9 @@
 package com.kodilla.patterns.factory.tasks;
 
+import java.time.LocalDateTime;
+
 public interface Task {
-    void executeTask();
+    String executeTask(LocalDateTime dueDate);
     String getTaskName() ;
-    boolean isTaskExecuted() ;
+    boolean isTaskExecuted(String taskExcuted) ;
 }

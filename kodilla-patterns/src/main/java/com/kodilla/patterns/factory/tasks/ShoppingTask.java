@@ -1,10 +1,13 @@
 package com.kodilla.patterns.factory.tasks;
 
+import java.time.LocalDateTime;
+
 public class ShoppingTask implements Task {
 
     private String taskName;
     private String whatToBuy;
     private double quantity;
+    String taskExecuted;
 
     public ShoppingTask(String taskName, String whatToBuy, double quantity) {
         this.taskName = taskName;
@@ -13,8 +16,17 @@ public class ShoppingTask implements Task {
     }
 
     @Override
-    public void executeTask() {
-        System.out.println("This task is nearly done...");
+    public String executeTask(LocalDateTime dueDate) {
+        if (LocalDateTime.now().isAfter(dueDate) || LocalDateTime.now().isEqual(dueDate)){
+            taskExecuted = "is done";
+            System.out.println("Shopping task " + taskExecuted);
+
+        }else{
+            taskExecuted = "is not done";
+            System.out.println("Shopping task " + taskExecuted);
+
+        }
+        return taskExecuted;
     }
 
     @Override
@@ -23,8 +35,12 @@ public class ShoppingTask implements Task {
     }
 
     @Override
-    public boolean isTaskExecuted() {
-        return false;
-    }
+    public boolean isTaskExecuted(String taskExcuted) {
 
+        if(taskExcuted.equals("is done")){
+            return true;
+        }else {
+        return false;
+        }
+    }
 }
