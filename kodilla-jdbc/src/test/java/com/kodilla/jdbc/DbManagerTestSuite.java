@@ -44,47 +44,47 @@ public class DbManagerTestSuite {
         Assert.assertEquals(5, counter);
     }
 
-    @Test
-    public void testSelectUsersAndPosts()throws SQLException {
-        //Given
-        DbManager dbManager = DbManager.getInstance();
-
-        //When
-        String sqlQuery = "SELECT * FROM ISSUESS";
-        Statement statement = dbManager.getConnection().createStatement();
-        ResultSet rs = statement.executeQuery(sqlQuery);
-
-        String newSqlQuery = "SELECT * FROM USERS";
-        Statement newStatement = dbManager.getConnection().createStatement();
-        ResultSet nRS = newStatement.executeQuery(newSqlQuery);
-
-        //Then
-
-        ArrayList<Integer> userIdAssignedto = new ArrayList<>();
-        while(rs.next()) {
-            userIdAssignedto.add(rs.getInt("USER_ID_ASSIGNEDTO"));
-            }
-        System.out.println(userIdAssignedto);
-        Map<Integer, Long> result = userIdAssignedto.stream()
-                            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        System.out.println(result);
-
-        int counter = 0;
-        while(nRS.next()) {
-            if (result.get(nRS.getInt("ID"))>1){
-            System.out.println(nRS.getString("FIRSTNAME") + " " +
-                    nRS.getString("LASTNAME"))  ;
-            counter++ ;
-            }
-        }
-
-        //Then
-        rs.close();
-        nRS.close();
-        statement.close();
-        newStatement.close();
-        Assert.assertEquals(3, counter);
-    }
+//    @Test
+//    public void testSelectUsersAndPosts()throws SQLException {
+//        //Given
+//        DbManager dbManager = DbManager.getInstance();
+//
+//        //When
+//        String sqlQuery = "SELECT * FROM ISSUESS";
+//        Statement statement = dbManager.getConnection().createStatement();
+//        ResultSet rs = statement.executeQuery(sqlQuery);
+//
+//        String newSqlQuery = "SELECT * FROM USERS";
+//        Statement newStatement = dbManager.getConnection().createStatement();
+//        ResultSet nRS = newStatement.executeQuery(newSqlQuery);
+//
+//        //Then
+//
+//        ArrayList<Integer> userIdAssignedto = new ArrayList<>();
+//        while(rs.next()) {
+//            userIdAssignedto.add(rs.getInt("USER_ID_ASSIGNEDTO"));
+//            }
+//        System.out.println(userIdAssignedto);
+//        Map<Integer, Long> result = userIdAssignedto.stream()
+//                            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+//        System.out.println(result);
+//
+//        int counter = 0;
+//        while(nRS.next()) {
+//            if (result.get(nRS.getInt("ID"))>1){
+//            System.out.println(nRS.getString("FIRSTNAME") + " " +
+//                    nRS.getString("LASTNAME"))  ;
+//            counter++ ;
+//            }
+//        }
+//
+//        //Then
+//        rs.close();
+//        nRS.close();
+//        statement.close();
+//        newStatement.close();
+//        Assert.assertEquals(3, counter);
+//    }
 }
 
 //    SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS ISSUES_NUMBER
