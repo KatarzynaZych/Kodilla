@@ -18,11 +18,11 @@ public class TaskListDaoTestSuite {
 
     @Autowired
     TaskListDao taskListDao;
-
+    private static final String LISTNAME = "ToDoList";
     @Test
     public void testTaskDaoFindByListName() {
         //Given
-        TaskList taskList = new TaskList("ToDoList","Things to do");
+        TaskList taskList = new TaskList(LISTNAME,"Things to do");
         taskListDao.save(taskList);
         String listName = taskList.getListName();
 
@@ -46,7 +46,7 @@ public class TaskListDaoTestSuite {
         TaskFinancialDetails tfd2 = new TaskFinancialDetails(new BigDecimal(10), false);
         task.setTaskFinancialDetails(tfd);
         task2.setTaskFinancialDetails(tfd2);
-        TaskList taskList = new TaskList("ToDoList", "ToDo tasks");
+        TaskList taskList = new TaskList(LISTNAME, "ToDo tasks");
         taskList.getTasks().add(task);
         taskList.getTasks().add(task2);
         task.setTaskList(taskList);
