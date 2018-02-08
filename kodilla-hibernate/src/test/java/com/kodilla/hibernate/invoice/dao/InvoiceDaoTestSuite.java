@@ -5,17 +5,23 @@ import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 
+
+@SpringBootTest
+@RunWith(SpringRunner.class)
 public class InvoiceDaoTestSuite {
 
     @Autowired
     InvoiceDao invoiceDao;
 
     @Test
-    public void  testInvoiceDaoSave(){
+    public void  testInvoiceDaoSave() {
         //Given
         Product product1 = new Product("Product 1");
         Product product2 = new Product("Product 2");
@@ -25,13 +31,13 @@ public class InvoiceDaoTestSuite {
         Product product6 = new Product("Product 6");
         Product product7 = new Product("Product 7");
 
-        Item item1 = new Item(BigDecimal.valueOf(1.155),1500,BigDecimal.valueOf(0.095));
-        Item item2 = new Item(BigDecimal.valueOf(5.100),1000,BigDecimal.valueOf(2.095));
-        Item item3 = new Item(BigDecimal.valueOf(0.108),7000,BigDecimal.valueOf(0.050));
-        Item item4 = new Item(BigDecimal.valueOf(85.745),11500,BigDecimal.valueOf(54.000));
-        Item item5 = new Item(BigDecimal.valueOf(15.100),9000,BigDecimal.valueOf(22.095));
-        Item item6 = new Item(BigDecimal.valueOf(20.108),11000,BigDecimal.valueOf(3.050));
-        Item item7 = new Item(BigDecimal.valueOf(3.745),1500,BigDecimal.valueOf(6.000));
+        Item item1 = new Item(BigDecimal.valueOf(1.155), 1500, BigDecimal.valueOf(0.095));
+        Item item2 = new Item(BigDecimal.valueOf(5.100), 1000, BigDecimal.valueOf(2.095));
+        Item item3 = new Item(BigDecimal.valueOf(0.108), 7000, BigDecimal.valueOf(0.050));
+        Item item4 = new Item(BigDecimal.valueOf(85.745), 11500, BigDecimal.valueOf(54.000));
+        Item item5 = new Item(BigDecimal.valueOf(15.100), 9000, BigDecimal.valueOf(22.095));
+        Item item6 = new Item(BigDecimal.valueOf(20.108), 11000, BigDecimal.valueOf(3.050));
+        Item item7 = new Item(BigDecimal.valueOf(3.745), 1500, BigDecimal.valueOf(6.000));
 
         Invoice invoice1 = new Invoice("12033");
         Invoice invoice2 = new Invoice("12034");

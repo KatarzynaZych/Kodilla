@@ -27,13 +27,9 @@ public class Item {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "ID", unique = true)
+    @Column(name = "ITEM_ID", unique = true)
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -42,27 +38,16 @@ public class Item {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     @NotNull
     @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
     @NotNull
     @Column(name = "QUANTITY")
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     @NotNull
@@ -71,16 +56,28 @@ public class Item {
         return value;
     }
 
-    public void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "INVOICE_ID")
+    @JoinColumn(name = "ID")
     public Invoice getInvoice() {
         return invoice;
     }
 
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }

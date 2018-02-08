@@ -1,7 +1,5 @@
 package com.kodilla.hibernate.invoice;
 
-import com.kodilla.hibernate.task.Task;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -25,23 +23,16 @@ public class Product {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "ID", unique = true)
+    @Column(name = "PRODUCT_ID", unique = true)
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @NotNull
     @Column(name = "NAME")
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @OneToMany(
@@ -54,6 +45,13 @@ public class Product {
         return items;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public void setItems(List<Item> items) {
         this.items = items;
     }
