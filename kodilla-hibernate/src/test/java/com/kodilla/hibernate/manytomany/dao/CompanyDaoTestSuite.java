@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.manytomany.dao;
 
-
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
 import org.junit.Assert;
@@ -10,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
     public void testSaveManyToMany(){
@@ -53,12 +56,61 @@ public class CompanyDaoTestSuite {
         Assert.assertNotEquals(0, greyMatterId);
 
         //CleanUp
-             try {
-                companyDao.delete(softwareMachineId);
-                companyDao.delete(dataMaestersId);
-                companyDao.delete(greyMatterId);
-            } catch (Exception e) {
-                //do nothing
-            }
+        try {
+            companyDao.delete(softwareMachineId);
+            companyDao.delete(dataMaestersId);
+            companyDao.delete(greyMatterId);
+        } catch (Exception e) {
+            //do nothing
         }
     }
+    @Test
+    public void testRetrieveNames(){
+        //Given
+        Employee johnKorzonek = new Employee("John", "Korzonek");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+        Employee kateKorzonek = new Employee("Kate", "Korzonek");
+
+        Company machineCompany = new Company("Machine Company");
+        Company mastersCompany = new Company("Masters Company");
+        Company bankCompany = new Company("Bank Company");
+
+        machineCompany.getEmployees().add(johnKorzonek);
+        machineCompany.getEmployees().add(kateKorzonek);
+        mastersCompany.getEmployees().add(stephanieClarckson);
+        mastersCompany.getEmployees().add(lindaKovalsky);
+        bankCompany.getEmployees().add(kateKorzonek);
+
+
+        johnKorzonek.getCompanies().add(machineCompany);
+        stephanieClarckson.getCompanies().add(mastersCompany);
+        lindaKovalsky.getCompanies().add(mastersCompany);
+        kateKorzonek.getCompanies().add(bankCompany);
+        kateKorzonek.getCompanies().add(machineCompany);
+
+        companyDao.save(machineCompany);
+        int machineId = machineCompany.getId();
+        companyDao.save(mastersCompany);
+        int mastersId = mastersCompany.getId();
+        companyDao.save(bankCompany);
+        int bankId= bankCompany.getId();
+
+        //When
+        List<Employee> resultLastname = employeeDao.retrieveLastname("Korzonek");
+        List<Company> resultCompanyName = companyDao.retrieveWithThreeLetters("Ban");
+
+        //Then
+        Assert.assertEquals(2, resultLastname.size());
+        Assert.assertEquals(1, resultCompanyName.size());
+
+        //CleanUp
+        try {
+            companyDao.delete(machineId);
+            companyDao.delete(mastersId);
+            companyDao.delete(bankId);
+        } catch (Exception e) {
+            //do nothing
+        }
+    }
+}

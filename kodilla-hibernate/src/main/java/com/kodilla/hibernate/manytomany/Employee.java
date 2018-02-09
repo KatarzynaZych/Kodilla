@@ -1,9 +1,14 @@
 package com.kodilla.hibernate.manytomany;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = " Employee.retrieveLastname",
+        query = " FROM Employee WHERE lastname = :LASTNAME "
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
@@ -40,6 +45,16 @@ public class Employee {
         return lastname;
     }
 
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(
+            name="JOIN_COMPANY_EMPLOYEE",
+            joinColumns = {@JoinColumn(name="EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
+            inverseJoinColumns = {@JoinColumn(name="COMPANY_ID", referencedColumnName = "COMPANY_ID")}
+    )
+    public List<Company> getCompanies() {
+        return companies;
+    }
+
     private void setId(int id) {
         this.id = id;
     }
@@ -52,17 +67,7 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "JOIN_COMPANY_EMPLOYEE",
-            joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}
-    )
-    public List<Company> getCompanies() {
-        return companies;
-    }
-
-    public void setCompanies(List<Company> companies) {
+    private void setCompanies(List<Company> companies) {
         this.companies = companies;
     }
 }
