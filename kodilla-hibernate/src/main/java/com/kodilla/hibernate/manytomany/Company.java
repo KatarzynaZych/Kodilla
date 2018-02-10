@@ -1,12 +1,13 @@
 package com.kodilla.hibernate.manytomany;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+
+
 @NamedNativeQuery(
-        name = " Company.retrieveWithThreeLetters",
-        query = " SELECT * FROM COMPANIES " +
+        name="Company.retrieveWithThreeLetters",
+        query="SELECT * FROM COMPANIES"+
                 " WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :PARTNAME",
         resultClass = Company.class
 )
