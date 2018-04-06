@@ -10,6 +10,7 @@ public final class Library {
     private final List<String> books = new ArrayList<>();
     private LibraryDbController libraryDbController;
 
+    // dlaczego final?
     public Library(final LibraryDbController libraryDbController) {
         this.libraryDbController = libraryDbController;
     }

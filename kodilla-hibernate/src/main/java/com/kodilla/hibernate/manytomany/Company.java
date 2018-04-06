@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 @NamedNativeQuery(
         name="Company.retrieveWithThreeLetters",
         query="SELECT * FROM COMPANIES"+
                 " WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :PARTNAME",
         resultClass = Company.class
+)
+@NamedQuery(
+        name = "Company.retrieveWithPartName",
+        query = "FROM Company WHERE company_name LIKE CONCAT('%', :PARTNAME, '%')"
 )
 @Entity
 @Table(name = "COMPANIES")
