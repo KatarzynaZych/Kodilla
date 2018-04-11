@@ -9,7 +9,7 @@ public class SalaryAdapterTestSuite {
     @Test
     public void testTotalSalary(){
         //Given
-        Workers workers=new Workers();
+        Workers workers = new Workers();
         SalaryAdapter salaryAdapter=new SalaryAdapter();
         //When
         double totalSalary=salaryAdapter.TotalSalary(workers.getWorkers(),workers.getSalaries());

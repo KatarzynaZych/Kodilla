@@ -33,7 +33,7 @@ public class Facade {
 
     public List<Company> searchCompany(String partName) throws SearchProcessingException {
         LOGGER.info("Searching company in progress ...");
-        List<Company> companies = companyDao.retrieveWithPartName(partName);
+        List<Company> companies = companyDao.retrieveWithPart(partName);
 
         if (companies.isEmpty()){
             LOGGER.error("No matching entries for search criteria.");

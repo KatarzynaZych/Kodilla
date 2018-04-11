@@ -1,8 +1,5 @@
 package com.kodilla.patterns2.adapter.bookclassifier.librarya;
 
-import com.kodilla.patterns2.adapter.company.SalaryAdaptee;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
-
 public class BookA {
 
     private final String author;

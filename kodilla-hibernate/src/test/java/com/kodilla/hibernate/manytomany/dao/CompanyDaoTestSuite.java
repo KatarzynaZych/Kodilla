@@ -148,7 +148,7 @@ public class CompanyDaoTestSuite {
 
         //When
         List<Employee> resultLastname = employeeDao.retrieveLastname("Korzonek");
-        List<Company> resultCompanyName = companyDao.retrieveWithThreeLetters("an");
+        List<Company> resultCompanyName = companyDao.retrieveWithPart("an");
 
         //Then
         //  Assert.assertEquals(2, resultLastname.size());

@@ -3,7 +3,6 @@ package com.kodilla.patterns2.adapter.bookclassifier;
 import com.kodilla.patterns2.adapter.bookclassifier.librarya.BookA;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.HashSet;
 import java.util.Set;
 

@@ -13,7 +13,7 @@ import java.util.List;
         resultClass = Company.class
 )
 @NamedQuery(
-        name = "Company.retrieveWithPartName",
+        name = "Company.retrieveWithPart",
         query = "FROM Company WHERE company_name LIKE CONCAT('%', :PARTNAME, '%')"
 )
 @Entity
