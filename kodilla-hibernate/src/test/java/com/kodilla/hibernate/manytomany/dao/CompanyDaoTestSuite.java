@@ -62,13 +62,13 @@ public class CompanyDaoTestSuite {
         try {
             companyDao.delete(softwareMachineId);
             companyDao.delete(dataMaestersId);
-            companyDao.delete(greyMatterId);
+            employeeDao.delete(greyMatterId);
         } catch (Exception e) {
             //do nothing
         }
     }
     @Test
-    public void testRetrieveNames(){
+    public void testRetrieveWithThreeLitters(){
         //Given
         Employee johnKorzonek = new Employee("John", "Korzonek");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -80,7 +80,53 @@ public class CompanyDaoTestSuite {
         Company bankCompany = new Company("Bank Company");
 
         machineCompany.getEmployees().add(johnKorzonek);
-        machineCompany.getEmployees().add(kateKorzonek);
+        mastersCompany.getEmployees().add(stephanieClarckson);
+        mastersCompany.getEmployees().add(lindaKovalsky);
+        bankCompany.getEmployees().add(kateKorzonek);
+
+        johnKorzonek.getCompanies().add(machineCompany);
+        stephanieClarckson.getCompanies().add(mastersCompany);
+        lindaKovalsky.getCompanies().add(mastersCompany);
+        kateKorzonek.getCompanies().add(bankCompany);
+
+        companyDao.save(machineCompany);
+        int machineId = machineCompany.getId();
+        companyDao.save(mastersCompany);
+        int mastersId = mastersCompany.getId();
+        companyDao.save(bankCompany);
+        int bankId= bankCompany.getId();
+
+        //When
+        List<Company> resultCompanyName = companyDao.retrieveWithThreeLetters("Ban");
+
+        //Then
+        Assert.assertEquals(1, resultCompanyName.size());
+
+        //CleanUp
+        try {
+            companyDao.delete(machineId);
+            companyDao.delete(mastersId);
+            companyDao.delete(bankId);
+
+
+        } catch (Exception e) {
+            //do nothing
+        }
+    }
+
+    @Test
+    public void testRetrieveLastNames(){
+        //Given
+        Employee johnKorzonek = new Employee("John", "Korzonek");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+        Employee kateKorzonek = new Employee("Kate", "Korzonek");
+
+        Company machineCompany = new Company("Machine Company");
+        Company mastersCompany = new Company("Masters Company");
+        Company bankCompany = new Company("Bank Company");
+
+        machineCompany.getEmployees().add(johnKorzonek);
         mastersCompany.getEmployees().add(stephanieClarckson);
         mastersCompany.getEmployees().add(lindaKovalsky);
         bankCompany.getEmployees().add(kateKorzonek);
@@ -90,7 +136,6 @@ public class CompanyDaoTestSuite {
         stephanieClarckson.getCompanies().add(mastersCompany);
         lindaKovalsky.getCompanies().add(mastersCompany);
         kateKorzonek.getCompanies().add(bankCompany);
-        kateKorzonek.getCompanies().add(machineCompany);
 
         companyDao.save(machineCompany);
         int machineId = machineCompany.getId();
@@ -101,61 +146,9 @@ public class CompanyDaoTestSuite {
 
         //When
         List<Employee> resultLastname = employeeDao.retrieveLastname("Korzonek");
-        List<Company> resultCompanyName = companyDao.retrieveWithThreeLetters("Ban");
 
         //Then
         Assert.assertEquals(2, resultLastname.size());
-        Assert.assertEquals(1, resultCompanyName.size());
-
-        //CleanUp
-        try {
-            companyDao.delete(machineId);
-            companyDao.delete(mastersId);
-            companyDao.delete(bankId);
-        } catch (Exception e) {
-            //do nothing
-        }
-    }
-
-    @Test
-    public void testRetrievePartNames(){
-        //Given
-        Employee johnKorzonek = new Employee("John", "Korzonek");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
-        Employee kateKorzonek = new Employee("Kate", "Korzonek");
-
-        Company machineCompany = new Company("Machine Company");
-        Company mastersCompany = new Company("Masters Company");
-        Company bankCompany = new Company("Bank Company");
-
-        machineCompany.getEmployees().add(johnKorzonek);
-        machineCompany.getEmployees().add(kateKorzonek);
-        mastersCompany.getEmployees().add(stephanieClarckson);
-        mastersCompany.getEmployees().add(lindaKovalsky);
-        bankCompany.getEmployees().add(kateKorzonek);
-
-
-        johnKorzonek.getCompanies().add(machineCompany);
-        stephanieClarckson.getCompanies().add(mastersCompany);
-        lindaKovalsky.getCompanies().add(mastersCompany);
-        kateKorzonek.getCompanies().add(bankCompany);
-        kateKorzonek.getCompanies().add(machineCompany);
-
-        companyDao.save(machineCompany);
-        int machineId = machineCompany.getId();
-        companyDao.save(mastersCompany);
-        int mastersId = mastersCompany.getId();
-        companyDao.save(bankCompany);
-        int bankId= bankCompany.getId();
-
-        //When
-        List<Employee> resultLastname = employeeDao.retrieveName("Korzonek");
-        List<Company> resultCompanyName = companyDao.retrieveWithPart("chine");
-
-        //Then
-        Assert.assertEquals(2, resultLastname.size());
-        Assert.assertEquals(1, resultCompanyName.size());
 
         //CleanUp
         try {

@@ -26,7 +26,6 @@ public class FacadeTest {
     @Test
     public void testFindCompany() {
         //Given
-
         facade.addEmployeeToCompany(new Company("Machine Company"), new Employee("John", "Smith"));
         facade.addEmployeeToCompany(new Company("Masters Company"), new Employee("Stephanie", "Clarckson"));
         facade.addEmployeeToCompany(new Company("Bank Company"), new Employee("Linda", "Kovalsky"));
@@ -48,8 +47,6 @@ public class FacadeTest {
     @Test
     public void testFindEmployee() {
         //Given
-        facade.deleteAll();
-
         facade.addEmployeeToCompany(new Company("Machine Company"), new Employee("Thomas", "Smith"));
         facade.addEmployeeToCompany(new Company("Masters Company"), new Employee("Joanna", "Clarckson"));
         facade.addEmployeeToCompany(new Company("Bank Company"), new Employee("Maria", "Kovalsky"));
@@ -57,7 +54,7 @@ public class FacadeTest {
         //When
         List<Employee> list = new ArrayList<>();
         try {
-            list = facade.searchEmployee("nna");
+            list = facade.searchEmployee("vals");
         } catch (SearchProcessingException e) {
         }
 

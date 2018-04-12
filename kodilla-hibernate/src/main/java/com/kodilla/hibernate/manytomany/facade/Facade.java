@@ -30,6 +30,7 @@ public class Facade {
 
     public void deleteAll() {
         companyDao.deleteAll();
+        employeeDao.deleteAll();
     }
 
     public List<Company> searchCompany(String partName) throws SearchProcessingException {
