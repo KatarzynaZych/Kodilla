@@ -25,6 +25,7 @@ public class Facade {
         company.getEmployees().add(employee);
         employee.getCompanies().add(company);
         companyDao.save(company);
+        employeeDao.save(employee);
     }
 
     public void deleteAll() {
@@ -45,9 +46,9 @@ public class Facade {
         return companies;
     }
 
-    public List<Employee> searchEmployee(String lastname) throws SearchProcessingException {
+    public List<Employee> searchEmployee(String name) throws SearchProcessingException {
         LOGGER.info("Searching company in progress ...");
-        List<Employee> employees = employeeDao.retrieveWithLastname(lastname);
+        List<Employee> employees = employeeDao.retrieveName(name);
 
         if (employees.isEmpty()){
             LOGGER.error("No matching entries for search criteria.");
