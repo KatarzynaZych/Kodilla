@@ -104,7 +104,7 @@ public class CompanyDaoTestSuite {
         List<Company> resultCompanyName = companyDao.retrieveWithThreeLetters("Ban");
 
         //Then
-      //  Assert.assertEquals(2, resultLastname.size());
+        Assert.assertEquals(2, resultLastname.size());
         Assert.assertEquals(1, resultCompanyName.size());
 
         //CleanUp
@@ -150,11 +150,11 @@ public class CompanyDaoTestSuite {
         int bankId= bankCompany.getId();
 
         //When
-        List<Employee> resultLastname = employeeDao.retrieveLastname("Korzonek");
-        List<Company> resultCompanyName = companyDao.retrieveWithPart("an");
+        List<Employee> resultLastname = employeeDao.retrieveName("Korzonek");
+        List<Company> resultCompanyName = companyDao.retrieveWithPart("chine");
 
         //Then
-        //  Assert.assertEquals(2, resultLastname.size());
+        Assert.assertEquals(2, resultLastname.size());
         Assert.assertEquals(1, resultCompanyName.size());
 
         //CleanUp
